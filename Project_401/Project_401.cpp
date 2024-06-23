@@ -1,38 +1,18 @@
-/* ---------------------- “рЄхмерный std::veсtor -------------------------
-ѕодкиньте примерчик создани€ и работы с трЄхмерным вектором, в котором вложенные вектора 
-произвольной длины.
-Х	первый индекс задаЄт количество векторов<векторов<<>>
-Х	второй - количество €чеек в "первом" вложенном векторе
-Х	третий - количество €чеек конечного (вложенного "во второй") вектора.
-ѕлюс весь этот вектор надо как-то ѕ≈–≈ƒј¬ј“№ ¬ ‘”Ќ ÷»» Ќ≈  ќѕ»–”я, ј Ќјѕ–яћ”ё, 
-т.к. в таком виде удобно хранить (в контексте моей задачи) данные.
-*/
 #include <iostream>
-#include <vector>using std::vector;
-using namespace std;
-// ѕ≈–≈ƒј„ј ѕќ ——џЋ ≈   ќѕ»–ќ¬јЌ»я Ќ≈ ¬џ«џ¬ј≈“ :
-void out(const vector<vector<vector<int>>> & v)
-{
-    for (int i = 0; i < v.size(); ++i)
-    {
-        for (int j = 0; j < v[i].size(); ++j)
-        {
-            for (int k = 0; k < v[i][j].size(); ++k)
-                cout << v[i][j][k] << " ";
-            cout << endl;
-        }
-        cout << endl;
-    }
-}
+#include <vector>
 int main()
 {
-    int n1 = 2, n2 = 3, n3 = 5;
-    vector<vector<vector<int>>> Vec(n1, vector<vector<int>>(n2, vector<int>(n3, 0)));
-
-    for (int i = 0; i < n1; ++i)
-        for (int j = 0; j < n2; ++j)
-            for (int k = 0; k < n3; ++k)
-                Vec[i][j][k] = (i + 1) * 100 + (j + 1) * 10 + k + 1;
-    out(Vec);
-
+    std::vector<std::vector<int>> vec;
+    vec.push_back({ 1,2,3 });
+    vec.push_back({ 4,5 });
+    vec.push_back({});
+    vec[1].push_back(6);
+    vec[2] = { 7,8,9 };
+    for (auto& it1 : vec)
+    {
+        for (auto& it2 : it1)
+            std::cout << it2 << ' ';
+        std::cout << '\n';
+    }
+    return 0;
 }
